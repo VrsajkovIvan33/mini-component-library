@@ -44,6 +44,9 @@ const BarWrapper = styled.div.attrs({
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 
+  // Hide the edges of the progress bar when it reaches close to 100%
+  overflow: hidden;
+
   border-radius: var(--border-radius);
   padding: var(--padding);
 `;
@@ -59,7 +62,7 @@ const Bar = styled.div.attrs((props) => ({
 
   background-color: ${COLORS.primary};
 
-  border-radius: ${p => p.value <= 99 ? "4px 0px 0px 4px" : "4px"};
+  border-radius: 4px 0px 0px 4px;
 `;
 
 export default ProgressBar;
