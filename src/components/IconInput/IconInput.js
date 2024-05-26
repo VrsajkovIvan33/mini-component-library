@@ -45,10 +45,12 @@ const TextInput = styled.input.attrs({
   padding: 4px 4px 4px 24px;
 
   border: none;
+
   background-color: transparent;
+  color: ${COLORS.gray700};
 
   &::placeholder {
-      color: ${COLORS.gray500}
+      color: ${COLORS.gray500};
   }
 `;
 
