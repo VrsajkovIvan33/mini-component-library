@@ -9,21 +9,15 @@ const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <ContainingBlockWrapper>
-      <SelectWrapper>
-        {displayedValue}
-        <Icon id="chevron-down" style={{ display: "inline-block" }}></Icon>
-      </SelectWrapper>
+    <SelectWrapper>
+      <TextValueWrapper>{displayedValue}</TextValueWrapper>
+      <Icon id="chevron-down" size="24" strokeWidth="4"></Icon>
       <HiddenSelect value={value} onChange={onChange}>
         {children}
       </HiddenSelect>
-    </ContainingBlockWrapper>
+    </SelectWrapper>
   );
 };
-
-const ContainingBlockWrapper = styled.div`
-  position: relative;
-`;
 
 const HiddenSelect = styled.select`
   // Cover the entire parent area
@@ -37,8 +31,23 @@ const HiddenSelect = styled.select`
   opacity: 0;
 `;
 
-const SelectWrapper = styled.div`
+const TextValueWrapper = styled.div`
+  padding-right: 16px;
+`;
 
+const SelectWrapper = styled.div`
+  // Make it a containing block
+  position: relative;
+
+  background-color: ${COLORS.transparentGray15};
+  color: ${COLORS.gray700};
+
+  width: fit-content;
+  padding: 12px 8px 12px 16px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
 `;
 
 export default Select;
