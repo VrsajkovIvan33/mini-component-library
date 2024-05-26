@@ -18,7 +18,9 @@ const ProgressBar = ({ value, size }) => {
 const BarWrapper = styled.div`
   width: 370px;
   height: 12px;
+
   background-color: ${COLORS.transparentGray15};
+  box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 `;
 
 const Bar = styled.div`
