@@ -13,11 +13,10 @@ const IconInput = ({
   size,
   placeholder,
 }) => {
-
   return (
     <InputWrapper style={{ "--width": width + "px" }}>
       <IconWrapper>
-        <Icon id="search" size={16} />
+        <Icon id={icon} size={16} />
       </IconWrapper>
       <TextInput placeholder={placeholder} />
     </InputWrapper>
