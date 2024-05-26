@@ -49,6 +49,7 @@ const IconInput = ({
       "--border-width": sizeStyle.borderWidth + "px"
     }}
     >
+      <VisuallyHidden>{label}</VisuallyHidden>
       <IconWrapper style={{ "--icon-size": sizeStyle.iconSize + "px" }}>
         <Icon id={icon} size={sizeStyle.iconSize} strokeWidth={sizeStyle.iconStrokeWidth} />
       </IconWrapper>
