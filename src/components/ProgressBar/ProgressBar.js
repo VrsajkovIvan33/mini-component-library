@@ -8,19 +8,19 @@ import VisuallyHidden from '../VisuallyHidden';
 const ProgressBar = ({ value, size }) => {
   const SIZE_STYLES = {
     small: {
-      "--height": "8px",
-      "--border-radius": "4px",
-      "--padding": "0px"
+      height: "8px",
+      borderRadius: "4px",
+      padding: "0px"
     },
     medium: {
-      "--height": "12px",
-      "--border-radius": "4px",
-      "--padding": "0px"
+      height: "12px",
+      borderRadius: "4px",
+      padding: "0px"
     },
     large: {
-      "--height": "24px",
-      "--border-radius": "8px",
-      "--padding": "4px"
+      height: "24px",
+      borderRadius: "8px",
+      padding: "4px"
     }
   }
 
@@ -28,10 +28,19 @@ const ProgressBar = ({ value, size }) => {
     size = "medium";
   }
 
+  const style = SIZE_STYLES[size];
+
   return (
-    <BarWrapper style={SIZE_STYLES[size]}>
+    <BarWrapper style={{
+      "--height": style.height,
+      "--padding": style.padding,
+      "--border-radius": style.borderRadius
+    }}
+    >
       <VisuallyHidden>{value}%</VisuallyHidden>
-      <Bar value={value}></Bar>
+      <BorderWrapper>
+        <Bar value={value}></Bar>
+      </BorderWrapper>
     </BarWrapper>
   )
 };
@@ -45,11 +54,19 @@ const BarWrapper = styled.div.attrs({
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 
-  // Hide the edges of the progress bar when it reaches close to 100%
-  overflow: hidden;
+  padding: var(--padding);
 
   border-radius: var(--border-radius);
-  padding: var(--padding);
+`;
+
+const BorderWrapper = styled.div.attrs({
+  "aria-hidden": true
+})`
+  height: 100%;
+
+  // Hide the edges of the progress bar when it reaches close to 100%
+  overflow: hidden;
+  border-radius: 4px;
 `;
 
 const Bar = styled.div.attrs((props) => ({
