@@ -6,10 +6,30 @@ import { COLORS } from '../../constants';
 import VisuallyHidden from '../VisuallyHidden';
 
 const ProgressBar = ({ value, size }) => {
-  // return <strong>{value}</strong>;
+  const SIZE_STYLES = {
+    small: {
+      "--height": "8px",
+      "--border-radius": "4px",
+      "--padding": "0px"
+    },
+    medium: {
+      "--height": "12px",
+      "--border-radius": "4px",
+      "--padding": "0px"
+    },
+    large: {
+      "--height": "24px",
+      "--border-radius": "8px",
+      "--padding": "4px"
+    }
+  }
+
+  if (!["small", "medium", "large"].includes(size)) {
+    size = "medium";
+  }
 
   return (
-    <BarWrapper>
+    <BarWrapper style={SIZE_STYLES[size]}>
       <Bar value={value}></Bar>
     </BarWrapper>
   )
@@ -17,12 +37,13 @@ const ProgressBar = ({ value, size }) => {
 
 const BarWrapper = styled.div`
   width: 370px;
-  height: 12px;
+  height: var(--height);
 
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 
-  border-radius: 4px;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
 `;
 
 const Bar = styled.div`
