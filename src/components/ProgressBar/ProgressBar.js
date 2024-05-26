@@ -30,6 +30,7 @@ const ProgressBar = ({ value, size }) => {
 
   return (
     <BarWrapper style={SIZE_STYLES[size]}>
+      <VisuallyHidden>{value}%</VisuallyHidden>
       <Bar value={value}></Bar>
     </BarWrapper>
   )
