@@ -38,7 +38,7 @@ const ProgressBar = ({ value, size }) => {
 const BarWrapper = styled.div.attrs({
   "aria-hidden": true
 })`
-  width: 370px;
+  width: 100%;
   height: var(--height);
 
   background-color: ${COLORS.transparentGray15};
