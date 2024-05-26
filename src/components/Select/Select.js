@@ -48,6 +48,10 @@ const SelectWrapper = styled.div`
 
   display: flex;
   align-items: center;
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
 
 export default Select;
