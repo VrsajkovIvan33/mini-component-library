@@ -20,7 +20,7 @@ const IconInput = ({
       <IconWrapper>
         <Icon id="search" size={16} />
       </IconWrapper>
-      <TextInput />
+      <TextInput placeholder={placeholder} />
     </InputWrapper>
   )
 };
@@ -55,6 +55,10 @@ const TextInput = styled.input.attrs({
 
   border: none;
   background-color: transparent;
+
+  &::placeholder {
+      color: ${COLORS.gray500}
+  }
 `;
 
 const InputWrapper = styled.div`
