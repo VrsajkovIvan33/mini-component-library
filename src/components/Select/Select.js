@@ -10,16 +10,18 @@ const Select = ({ label, value, onChange, children }) => {
 
   return (
     <SelectWrapper>
-      <TextValueWrapper>{displayedValue}</TextValueWrapper>
-      <Icon id="chevron-down" size="24" strokeWidth="4"></Icon>
-      <HiddenSelect value={value} onChange={onChange}>
+      <InvisibleNativeSelect value={value} onChange={onChange}>
         {children}
-      </HiddenSelect>
+      </InvisibleNativeSelect>
+      <CustomSelect>
+        <TextValueWrapper>{displayedValue}</TextValueWrapper>
+        <Icon id="chevron-down" size="24" strokeWidth="4"></Icon>
+      </CustomSelect>
     </SelectWrapper>
   );
 };
 
-const HiddenSelect = styled.select`
+const InvisibleNativeSelect = styled.select`
   // Cover the entire parent area
   position: absolute;
   top: 0;
@@ -33,23 +35,31 @@ const HiddenSelect = styled.select`
 
 const TextValueWrapper = styled.div`
   padding-right: 16px;
+  font-size: ${16 / 16}rem;
 `;
 
 const SelectWrapper = styled.div`
   // Make it a containing block
   position: relative;
+  width: fit-content;
+`;
+
+const CustomSelect = styled.div`
+  display: flex;
+  align-items: center;
 
   background-color: ${COLORS.transparentGray15};
   color: ${COLORS.gray700};
 
-  width: fit-content;
   padding: 12px 8px 12px 16px;
   border-radius: 8px;
 
-  display: flex;
-  align-items: center;
+  ${InvisibleNativeSelect}:focus + & {
+    outline: 1px dotted #212121;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
 
-  &:hover {
+  ${InvisibleNativeSelect}:hover + & {
     color: ${COLORS.black};
   }
 `;
