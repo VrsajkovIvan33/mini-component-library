@@ -35,6 +35,7 @@ const InvisibleNativeSelect = styled.select`
 
 const TextValueWrapper = styled.div`
   padding-right: 16px;
+  font-size: ${16 / 16}rem;
 `;
 
 const SelectWrapper = styled.div`
