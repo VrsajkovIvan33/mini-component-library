@@ -13,10 +13,9 @@ const IconInput = ({
   size,
   placeholder,
 }) => {
-  // return <TextInput />;
+
   return (
-    <InputWrapper>
-      <Underline />
+    <InputWrapper style={{ "--width": width + "px" }}>
       <IconWrapper>
         <Icon id="search" size={16} />
       </IconWrapper>
@@ -25,17 +24,10 @@ const IconInput = ({
   )
 };
 
-const Underline = styled.div`
-  height: 24px;
-  background-color: transparent;
-  border-bottom: 1px solid ${COLORS.black}
-`
-
 const IconWrapper = styled.div`
   position: absolute;
 
   height: 16px;
-  width: 16px;
 
   top: 4px;
   bottom: 4px;
@@ -63,6 +55,11 @@ const TextInput = styled.input.attrs({
 
 const InputWrapper = styled.div`
   position: relative;
+
+  height: 24px;
+  width: var(--width);
+
+  border-bottom: 1px solid ${COLORS.black}
 `;
 
 export default IconInput;
