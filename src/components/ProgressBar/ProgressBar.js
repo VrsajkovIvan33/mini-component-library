@@ -35,7 +35,9 @@ const ProgressBar = ({ value, size }) => {
   )
 };
 
-const BarWrapper = styled.div`
+const BarWrapper = styled.div.attrs({
+  "aria-hidden": true
+})`
   width: 370px;
   height: var(--height);
 
@@ -46,7 +48,12 @@ const BarWrapper = styled.div`
   padding: var(--padding);
 `;
 
-const Bar = styled.div`
+const Bar = styled.div.attrs((props) => ({
+  "aria-valuenow": props.value >= 0 ? props.value <= 100 ? props.value : "100" : "0",
+  "aria-valuemin": "0",
+  "aria-valuemax": "100",
+  "role": "progressbar"
+}))`
   height: 100%;
   width: ${p => p.value >= 0 ? p.value <= 100 ? p.value + "%" : "100%" : "0%"};
 
