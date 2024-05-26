@@ -48,9 +48,11 @@ const TextInput = styled.input.attrs({
 
   background-color: transparent;
   color: ${COLORS.gray700};
+  font-weight: 700;
 
   &::placeholder {
       color: ${COLORS.gray500};
+      font-weight: 400;
   }
 `;
 
