@@ -83,8 +83,12 @@ const TextInput = styled.input.attrs({
   font-size: var(--font-size);
 
   &::placeholder {
-      color: ${COLORS.gray500};
-      font-weight: 400;
+    color: ${COLORS.gray500};
+    font-weight: 400;
+  }
+
+  &:focus {
+    outline-offset: 2px;
   }
 `;
 
@@ -92,6 +96,10 @@ const InputWrapper = styled.div`
   position: relative;
 
   color: ${COLORS.gray700};
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
 
 export default IconInput;
