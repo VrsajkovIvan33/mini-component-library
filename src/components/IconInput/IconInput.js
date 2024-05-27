@@ -15,24 +15,18 @@ const IconInput = ({
 }) => {
   const SIZE_STYLES = {
     small: {
-      borderWidth: 1,
+      borderThickness: 1,
       iconSize: 16,
       iconStrokeWidth: 1,
-      totalHeight: 24,
-      fontSize: 14,
-      lineHeight: 16,
-      padding: 4,
-      iconTextSpacing: 8,
+      height: 24,
+      fontSize: 14
     },
     large: {
-      borderWidth: 2,
+      borderThickness: 2,
       iconSize: 24,
       iconStrokeWidth: 2,
-      totalHeight: 36,
-      fontSize: 18,
-      lineHeight: 21,
-      padding: 6,
-      iconTextSpacing: 12,
+      height: 36,
+      fontSize: 18
     }
   }
 
@@ -49,11 +43,10 @@ const IconInput = ({
         <Icon id={icon} size={sizeStyle.iconSize} strokeWidth={sizeStyle.iconStrokeWidth} />
       </IconWrapper>
       <TextInput placeholder={placeholder} style={{
-        "--padding": (sizeStyle.padding + "px ").repeat(3) + (sizeStyle.iconSize + sizeStyle.iconTextSpacing) + "px",
         "--font-size": (sizeStyle.fontSize / 16) + "rem",
-        "--height": sizeStyle.totalHeight + "px",
+        "--height": (sizeStyle.height / 16) + "rem",
         "--width": width + "px",
-        "--border-width": sizeStyle.borderWidth + "px"
+        "--border-thickness": sizeStyle.borderThickness + "px"
       }}
       />
     </InputWrapper>
@@ -63,12 +56,12 @@ const IconInput = ({
 const IconWrapper = styled.div`
   position: absolute;
 
-  height: var(--icon-size);
-
   top: 0;
   bottom: 0;
   left: 0;
   margin: auto;
+
+  height: var(--icon-size);
 
   pointer-events: none;
 `;
@@ -76,19 +69,18 @@ const IconWrapper = styled.div`
 const TextInput = styled.input.attrs({
   type: "text"
 })`
-  padding: var(--padding);
+  padding-left: var(--height);
 
   border: none;
-  border-bottom: var(--border-width) solid ${COLORS.black};
+  border-bottom: var(--border-thickness) solid ${COLORS.black};
 
-  background-color: transparent;
-  color: ${COLORS.gray700};
-
-  font-weight: 700;
-  font-size: var(--font-size);
+  color: inherit;
 
   height: var(--height);
   width: var(--width);
+
+  font-weight: 700;
+  font-size: var(--font-size);
 
   &::placeholder {
       color: ${COLORS.gray500};
@@ -98,6 +90,8 @@ const TextInput = styled.input.attrs({
 
 const InputWrapper = styled.div`
   position: relative;
+
+  color: ${COLORS.gray700};
 `;
 
 export default IconInput;
